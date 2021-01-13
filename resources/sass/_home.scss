@@ -1,5 +1,6 @@
 .welcome-jumbo {
-    max-width: calc(100vw - 350px);
+    transform: translate3d(300px, 0, 0);
+    max-width: calc(100vw - 300px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,3 +58,5 @@
     //   }
     // }
 }
+
+// Small devices (landscape phones, 576px and up)
