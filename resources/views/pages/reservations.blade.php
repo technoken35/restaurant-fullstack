@@ -9,13 +9,25 @@
                     <h1> Get On The List</h1>
                     <form>
                         <div class="form-group">
+                            <div class="firstNameInput">
+                                <label for="firstNameInput" >First Name</label>
+                                <input name="fname" type="text" class="form-control" id="firstNameInput" placeholder="John">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="lastNameInput">
+                                <label for="lastNameInput" >Last Name</label>
+                                <input name="lname" type="text" class="form-control" id="lastNameInput" placeholder="Doe">
+                            </div>
+                        </div>
+                        <div class="form-group">
                           <label for="emailInput" >Email address</label>
                           <input name="email" type="email" class="form-control" id="emailInput" placeholder="name@example.com">
                         </div>
                         <div class="form-group">
                             <label for="phoneInput" >Phone #</label>
                             <input name="phone" type="text" class="form-control" id="phoneInput" placeholder="702-421-5634">
-                          </div>
+                        </div>
                         <div class="form-group">
                           <label for="guestsInput" >How Many Guests</label>
                           <select name="guests" class="form-control" id="guestsInput">

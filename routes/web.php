@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 /* STATIC PAGES */
 Route::get('/', 'App\Http\Controllers\StaticPagesController@index');
-Route::get('/waitlist', 'App\Http\Controllers\StaticPagesController@waitlist');
+Route::get('/reservations', 'App\Http\Controllers\StaticPagesController@reservations');
 Route::get('/offers', 'App\Http\Controllers\StaticPagesController@offers');
 Route::get('/about', 'App\Http\Controllers\StaticPagesController@about');
 Route::get('/contact', 'App\Http\Controllers\StaticPagesController@contact');
@@ -38,6 +38,17 @@ Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodC
 Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index');
 Route::get('/admin/food-items/create', 'App\Http\Controllers\admin\FoodItemsController@create');
 Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsController@edit');
+
+// Admin users
+Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index');
+Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@create');
+Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
+
+
+// Admin Customers
+Route::get('/admin/offers-members', 'App\Http\Controllers\admin\CustomersController@allOffersMembers');
+Route::get('/admin/reservations/', 'App\Http\Controllers\admin\CustomersController@allReservations');
+
 
 // admin auth
 Route::get('/admin/login', function () {
