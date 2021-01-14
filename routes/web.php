@@ -59,3 +59,7 @@ Route::get('/admin/register', function () {
     return view('admin/register');
 });
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
