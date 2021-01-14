@@ -62,10 +62,10 @@
                                 <div id="submenu-1-2" class="collapse submenu" style="">
                                     <ul class="nav flex-column">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="admin/food-items"> All Food Items <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="/admin/food-items"> All Food Items <span class="badge badge-secondary">New</span></a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="admin/food-items/create"> New Food Item <span class="badge badge-secondary">New</span></a>
+                                            <a class="nav-link" href="/admin/food-items/create"> New Food Item <span class="badge badge-secondary">New</span></a>
                                         </li>
                                     </ul>
                                 </div>
