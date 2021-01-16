@@ -41,7 +41,10 @@ Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsC
 
 // Admin users
 Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index');
+// create user page
 Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@create');
+// post route to save user to DB
+Route::post('/admin/users', 'App\Http\Controllers\admin\UsersController@store');
 Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
 
 

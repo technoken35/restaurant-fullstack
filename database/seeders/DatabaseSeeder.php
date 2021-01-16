@@ -14,5 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        // this class creates dummy users
+        $this->call(UsersTableSeeder::class);
+        // this class creates 'dummy' roles
+        $this->call(RolesTableSeeder::class);
     }
 }
