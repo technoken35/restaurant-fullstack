@@ -18,7 +18,11 @@ class UsersController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        return view('admin/users/all');
+        // built in pagination by laravel. we will only see one user per page
+        $users= User::paginate(10);
+        return view('admin/users/all', [
+            'users'=>$users
+        ]);
     }
 
     public function create(){

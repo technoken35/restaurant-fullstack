@@ -46,16 +46,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>John Doe</td>
-                                        <td>2/2/2020</td>
-                                        <td><a href="/admin/users/1/edit"><i class="far fa-edit"></i></a></td>
-                                        <td><a onclick="if(!confirm('Are you sure you want to delete category?')){return false}" href="/admin/users/1/delete"><i class="far fa-trash-alt"></i></a></td>
-                                    </tr>
-
+                                    @foreach ($users as $user)
+                                        <tr>
+                                            <th scope="row">{{$user->id}}</th>
+                                            <td>{{$user->fname}} {{$user->lname}}</td>
+                                            <td>{{date('m/d/y',strtotime($user->updated_at))}}</td>
+                                            <td><a href="/admin/users/{{$user->id}}/edit"><i class="far fa-edit"></i></a></td>
+                                            <td><a onclick="if(!confirm('Are you sure you want to delete category?')){return false}" href="/admin/users/{{$user->id}}/delete"><i class="far fa-trash-alt"></i></a></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
+                            <!-- Built in Pagination link provided by Laravel how cool is that -->
+                            {{{$users->links()}}}
                         </div>
                     </div>
             </div>
