@@ -29,9 +29,9 @@ class CreateRoleUserTable extends Migration
             // refrences means we want to get the value for this table from the id column on the roles table
             // onCascade('delete') means the child table can update/delete parent table and vice versa
             $table->foreign('role_id')->references('id')->on('roles')
-            ->onCascade('delete');
+            ->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
-            ->onCascade('delete');
+            ->onDelete('cascade');
         });
     }
 

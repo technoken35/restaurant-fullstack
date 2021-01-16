@@ -62,7 +62,54 @@ class UsersController extends Controller
         return redirect('/admin/users');
     }
 
-    public function edit(){
-        return view('admin/users/edit');
+    // we are accessing the id in the URL /admin/users/1/edit
+    public function edit($id){
+
+        $user= User::find($id);
+        $roles= Role::All();
+        return view('admin/users/edit',[
+            'user'=>$user,
+            'roles'=>$roles
+        ]);
+    }
+
+    public function update($id){
+        request()->validate([
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id' => ['required'],
+
+        ]);
+
+
+        // finding the user by ID and updating, Then saving to DB
+        $user = User::find($id);
+
+        $user->fname=request('fname');
+        $user->lname=request('lname');
+        $user->email=request('email');
+        $user->password=Hash::make(request('password'));
+        // saving user to DB with built in save function
+        $user->save();
+        // sync will drop all relationships that user has
+        $user->roles()->sync([request('role_id')]);
+        // this will update the role WITHOUT dropping other relationships
+        //$user->roles()->syncWithoutDetaching([request('role_id')]);
+        return redirect('/admin/users');
+       /* return 'test';
+        $user= User::find($id);
+        $roles= Role::All();
+        return view('admin/users/edit',[
+            'user'=>$user,
+            'roles'=>$roles
+        ]); */
+    }
+
+    public function delete($id){
+        $user= User::find($id);
+        $user->delete();
+        return redirect('/admin/users');
     }
 }

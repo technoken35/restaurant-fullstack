@@ -46,7 +46,14 @@ Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@cr
 // post route to save user to DB
 Route::post('/admin/users', 'App\Http\Controllers\admin\UsersController@store');
 Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
+Route::put('/admin/users/{id}', 'App\Http\Controllers\admin\UsersController@update');
+// we can either delete with a post request or a get requests
+//Route::get('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
 
+//Route::post('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
+
+// To follow rest conventions we would do a delete request instead of a post or get method
+Route::delete('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
 
 // Admin Customers
 Route::get('/admin/offers-members', 'App\Http\Controllers\admin\CustomersController@allOffersMembers');
