@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersTableSeeder::class);
         // this class creates 'dummy' roles
         $this->call(RolesTableSeeder::class);
+        // Make sure Food Category comes first
+        $this->call(FoodCategorySeeder::class);
+        $this->call(FoodItemSeeder::class);
     }
 }

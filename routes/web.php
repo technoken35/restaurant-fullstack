@@ -26,6 +26,7 @@ Route::get('/contact', 'App\Http\Controllers\StaticPagesController@contact');
 Route::get('/menu', 'App\Http\Controllers\StaticPagesController@menu');
 Route::get('/menu/{slug}', 'App\Http\Controllers\StaticPagesController@singleMenu');
 
+
 // admin dash
 Route::get('/admin', 'App\Http\Controllers\admin\AdminController@index');
 
@@ -33,6 +34,9 @@ Route::get('/admin', 'App\Http\Controllers\admin\AdminController@index');
 Route::get('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@index');
 Route::get('/admin/food-categories/create', 'App\Http\Controllers\admin\FoodCategoriesController@create');
 Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodCategoriesController@edit');
+Route::put('/admin/food-categories/{id}', 'App\Http\Controllers\admin\FoodCategoriesController@update');
+Route::delete('/admin/food-categories/{id}/delete', 'App\Http\Controllers\admin\FoodCategoriesController@delete');
+
 
 // admin food items
 Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index');
