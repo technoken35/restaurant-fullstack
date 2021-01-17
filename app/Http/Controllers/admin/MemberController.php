@@ -21,7 +21,7 @@ class MemberController extends Controller
     public function index(){
         // built in pagination by laravel. we will only see one Member per page
         $members= Member::paginate(10);
-        return view('admin/members/all-members', [
+        return view('admin/members/all', [
             'members'=>$members
         ]);
     }
