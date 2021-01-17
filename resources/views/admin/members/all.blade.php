@@ -52,12 +52,10 @@
                                         <td>{{$member->email}} </td>
                                         <td>{{$member->phone_number}} </td>
                                         <td>{{date('m/d/y',strtotime($member->updated_at))}}</td>
-                                        <td><a href="/admin/food-members/{{$member->id}}/edit"><i class="far fa-edit"></i></a></td>
-                                       {{-- <td><a onclick="if(!confirm('Are you sure you want to delete member?')){return false}" href="/admin/users/{{$member->id}}/delete"><i class="far fa-trash-alt"></i></a></td> --}}
                                       <td>  <a href="#"  onclick="event.preventDefault(); document.getElementById('delete-member-{{$member->id}}').submit();">
                                             <i class="far fa-trash-alt"></i></a> </td>
 
-                                        <form id="delete-member-{{$member->id}}" action="/admin/food-members/{{$member->id}}/delete" method="POST" class="d-none">
+                                        <form id="delete-member-{{$member->id}}" action="/admin/members/{{$member->id}}/delete" method="POST" class="d-none">
                                             @method('DELETE')
                                             @csrf
                                         </form>
@@ -66,6 +64,7 @@
 
                                 </tbody>
                             </table>
+                            {{{$members->links()}}}
                         </div>
                     </div>
             </div>
