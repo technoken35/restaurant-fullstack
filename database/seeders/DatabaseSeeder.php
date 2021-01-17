@@ -21,5 +21,7 @@ class DatabaseSeeder extends Seeder
         // Make sure Food Category comes first
         $this->call(FoodCategorySeeder::class);
         $this->call(FoodItemSeeder::class);
+        $this->call(MemberSeeder::class);
+
     }
 }
