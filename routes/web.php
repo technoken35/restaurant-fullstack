@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'App\Http\Controllers\StaticPagesController@index');
 Route::get('/reservations', 'App\Http\Controllers\StaticPagesController@reservations');
 Route::get('/offers', 'App\Http\Controllers\StaticPagesController@offers');
+Route::post('/offers', 'App\Http\Controllers\StaticPagesController@registerMember');
+Route::get('/offers/thank-you', 'App\Http\Controllers\StaticPagesController@offersThankYou');
+
 Route::get('/about', 'App\Http\Controllers\StaticPagesController@about');
 Route::get('/contact', 'App\Http\Controllers\StaticPagesController@contact');
 Route::get('/menu', 'App\Http\Controllers\StaticPagesController@menu');

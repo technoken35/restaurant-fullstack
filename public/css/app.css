@@ -292,6 +292,9 @@ table {
   border: none;
   padding: 20px 40px;
 }
+#offers-page .thank-you h1 {
+  text-align: center;
+}
 
 @media (min-width: 0px) and (max-width: 767px) {
   #offers-page {
