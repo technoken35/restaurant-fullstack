@@ -38,6 +38,15 @@ class UsersController extends Controller
     public function store(){
         // create a new user based on our user model
        // return request()->all();
+
+       request()->validate([
+            'fname' => ['required', 'string', 'max:255'],
+            'lname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role_id' => ['required'],
+
+        ]);
         $user = new User();
         $user->fname=request('fname');
         $user->lname=request('lname');
@@ -98,13 +107,6 @@ class UsersController extends Controller
         // this will update the role WITHOUT dropping other relationships
         //$user->roles()->syncWithoutDetaching([request('role_id')]);
         return redirect('/admin/users');
-       /* return 'test';
-        $user= User::find($id);
-        $roles= Role::All();
-        return view('admin/users/edit',[
-            'user'=>$user,
-            'roles'=>$roles
-        ]); */
     }
 
     public function delete($id){

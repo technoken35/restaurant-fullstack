@@ -17,7 +17,8 @@ class CreateFoodItemsTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->text('image_url');
+            // nullable allows this field to be empty
+            $table->text('image_url')->nullable();
             $table->float('price',8,2);
             // linking category id to food category table
             // we make it nullable so if we delete one category we dont delete ALL items just items associated with deleted category

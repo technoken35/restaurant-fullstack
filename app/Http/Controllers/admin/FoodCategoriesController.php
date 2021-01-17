@@ -32,8 +32,13 @@ class FoodCategoriesController extends Controller
 
     // our post request in the form goes to this route
     public function store(){
-        // create a new FoodCategory based on our FoodCategory model
-       // return request()->all();
+
+       request()->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
+            'image_url' => ['required', 'string'],
+        ]);
+
         $category = new FoodCategory();
         $category->title=request('title');
         $category->description=request('description');

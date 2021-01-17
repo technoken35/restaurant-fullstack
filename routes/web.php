@@ -33,6 +33,7 @@ Route::get('/admin', 'App\Http\Controllers\admin\AdminController@index');
 // admin food cat
 Route::get('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@index');
 Route::get('/admin/food-categories/create', 'App\Http\Controllers\admin\FoodCategoriesController@create');
+Route::post('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@store');
 Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodCategoriesController@edit');
 Route::put('/admin/food-categories/{id}', 'App\Http\Controllers\admin\FoodCategoriesController@update');
 Route::delete('/admin/food-categories/{id}/delete', 'App\Http\Controllers\admin\FoodCategoriesController@delete');
@@ -42,6 +43,10 @@ Route::delete('/admin/food-categories/{id}/delete', 'App\Http\Controllers\admin\
 Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index');
 Route::get('/admin/food-items/create', 'App\Http\Controllers\admin\FoodItemsController@create');
 Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsController@edit');
+Route::post('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@store');
+Route::put('/admin/food-items/{id}', 'App\Http\Controllers\admin\FoodItemsController@update');
+Route::delete('/admin/food-items/{id}/delete', 'App\Http\Controllers\admin\FoodItemsController@delete');
+
 
 // Admin users
 Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index');

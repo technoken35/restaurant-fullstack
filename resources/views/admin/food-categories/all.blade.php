@@ -53,7 +53,7 @@
                                             <td>{{date('m/d/y',strtotime($category->updated_at))}}</td>
                                             <td><a href="/admin/food-categories/{{$category->id}}/edit"><i class="far fa-edit"></i></a></td>
                                            {{-- <td><a onclick="if(!confirm('Are you sure you want to delete category?')){return false}" href="/admin/users/{{$category->id}}/delete"><i class="far fa-trash-alt"></i></a></td> --}}
-                                          <td>  <a href="#"  onclick="event.preventDefault(); document.getElementById('delete-user-{{$category->id}}').submit();">
+                                          <td>  <a href="#"  onclick="event.preventDefault(); document.getElementById('delete-category-{{$category->id}}').submit();">
                                                 <i class="far fa-trash-alt"></i></a> </td>
 
                                             <form id="delete-category-{{$category->id}}" action="/admin/food-categories/{{$category->id}}/delete" method="POST" class="d-none">

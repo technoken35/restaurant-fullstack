@@ -10,7 +10,10 @@ class FoodItem extends Model
     //use HasFactory;
 
     protected $table='food_items';
-    public function food_category(){
+    protected $fillable=[
+        'title','description','image_url','price','category_id'
+    ];
+    public function categories(){
         return $this->belongsTo('App\Models\FoodCategory');
     }
 
