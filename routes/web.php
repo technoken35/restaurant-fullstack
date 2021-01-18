@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\GeneralSetting;
+use App\Models\SeoSetting;
+use App\Models\SocialSetting;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,13 +87,13 @@ Route::delete('/admin/reservations/{id}/delete', 'App\Http\Controllers\admin\Res
 Route::get('/admin/reservations', 'App\Http\Controllers\admin\ReservationController@index');
 
 //Admin settings
-Route::get('/admin/settings/general', 'App\Http\Controllers\admin\SettingsController@general');
-Route::post('/admin/settings/general', 'App\Http\Controllers\admin\SettingsController@saveGeneral');
-Route::get('/admin/settings/seo', 'App\Http\Controllers\admin\SettingsController@seo');
-Route::post('/admin/settings/seo', 'App\Http\Controllers\admin\SettingsController@saveSeo');
-Route::get('/admin/settings/social', 'App\Http\Controllers\admin\SettingsController@social');
-Route::post('/admin/settings/social', 'App\Http\Controllers\admin\SettingsController@saveSocial');
-Route::delete('/admin/members/{id}/delete', 'App\Http\Controllers\admin\MemberController@delete');
+Route::get('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@general');
+Route::put('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@saveGeneral');
+Route::get('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@seo');
+Route::put('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@saveSeo');
+Route::get('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@social');
+Route::put('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@saveSocial');
+
 
 
 // admin auth
@@ -106,3 +109,15 @@ Route::get('/admin/register', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// this is a wildcard view. We can pass data here for every view
+View::composer('*',function($view){
+    $generalSettings= GeneralSetting::find(1);
+        $seoSettings = SeoSetting::find(1);
+        $socialSettings = SocialSetting::find(1);
+    $view->with('settings',[
+        'social'=> $socialSettings,
+        'seo'=>$seoSettings,
+        'general'=>$generalSettings
+    ]);
+});

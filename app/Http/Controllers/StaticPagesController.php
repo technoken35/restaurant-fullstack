@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Models\Reservation;
+use App\Models\GeneralSetting;
+use App\Models\SeoSetting;
+use App\Models\SocialSetting;
+
+
+
 
 
 use Illuminate\Http\Request;
@@ -10,6 +16,10 @@ use Illuminate\Http\Request;
 class StaticPagesController extends Controller
 {
     public function index (){
+        $generalSettings= GeneralSetting::find(1);
+        $seoSettings = SeoSetting::find(1);
+        $socialSettings = SocialSetting::find(1);
+
         return view('home');
     }
 
