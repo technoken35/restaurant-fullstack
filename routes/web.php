@@ -83,6 +83,14 @@ Route::delete('/admin/members/{id}/delete', 'App\Http\Controllers\admin\MemberCo
 Route::delete('/admin/reservations/{id}/delete', 'App\Http\Controllers\admin\ReservationController@delete');
 Route::get('/admin/reservations', 'App\Http\Controllers\admin\ReservationController@index');
 
+//Admin settings
+Route::get('/admin/settings/general', 'App\Http\Controllers\admin\SettingsController@general');
+Route::post('/admin/settings/general', 'App\Http\Controllers\admin\SettingsController@saveGeneral');
+Route::get('/admin/settings/seo', 'App\Http\Controllers\admin\SettingsController@seo');
+Route::post('/admin/settings/seo', 'App\Http\Controllers\admin\SettingsController@saveSeo');
+Route::get('/admin/settings/social', 'App\Http\Controllers\admin\SettingsController@social');
+Route::post('/admin/settings/social', 'App\Http\Controllers\admin\SettingsController@saveSocial');
+Route::delete('/admin/members/{id}/delete', 'App\Http\Controllers\admin\MemberController@delete');
 
 
 // admin auth
