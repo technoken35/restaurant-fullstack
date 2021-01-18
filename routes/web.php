@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 /* STATIC PAGES */
 Route::get('/', 'App\Http\Controllers\StaticPagesController@index');
 Route::get('/reservations', 'App\Http\Controllers\StaticPagesController@reservations');
+Route::get('/reservation/confirmation', 'App\Http\Controllers\StaticPagesController@reservationConfirmation');
+Route::post('/reservations', 'App\Http\Controllers\StaticPagesController@saveReservation');
+
 Route::get('/offers', 'App\Http\Controllers\StaticPagesController@offers');
 Route::post('/offers', 'App\Http\Controllers\StaticPagesController@registerMember');
 Route::get('/offers/thank-you', 'App\Http\Controllers\StaticPagesController@offersThankYou');
@@ -73,7 +76,13 @@ Route::get('/admin/members', 'App\Http\Controllers\admin\MemberController@index'
 Route::delete('/admin/members/{id}/delete', 'App\Http\Controllers\admin\MemberController@delete');
 
 //Admin reservations
-Route::get('/admin/reservations/', 'App\Http\Controllers\admin\CustomersController@allReservations');
+//Route::post('/admin/reservations', 'App\Http\Controllers\admin\UsersController@store');
+// ! add edit later
+//Route::get('/admin/reservations/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
+//Route::put('/admin/reservations/{id}', 'App\Http\Controllers\admin\UsersController@update');
+Route::delete('/admin/reservations/{id}/delete', 'App\Http\Controllers\admin\ReservationController@delete');
+Route::get('/admin/reservations', 'App\Http\Controllers\admin\ReservationController@index');
+
 
 
 // admin auth

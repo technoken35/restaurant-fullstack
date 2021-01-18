@@ -1,64 +1,94 @@
 @extends('layouts.app')
 
+
 @section('content')
     <div id="waitlist-page">
-        <div class="content-box">
-            <div class="row">
-                <div class="col-md-6">
 
-                    <h1> Get On The List</h1>
-                    <form>
-                        <div class="form-group">
-                            <div class="firstNameInput">
-                                <label for="firstNameInput" >First Name</label>
-                                <input name="fname" type="text" class="form-control" id="firstNameInput" placeholder="John">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="lastNameInput">
-                                <label for="lastNameInput" >Last Name</label>
-                                <input name="lname" type="text" class="form-control" id="lastNameInput" placeholder="Doe">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                          <label for="emailInput" >Email address</label>
-                          <input name="email" type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="phoneInput" >Phone #</label>
-                            <input name="phone" type="text" class="form-control" id="phoneInput" placeholder="702-421-5634">
-                        </div>
-                        <div class="form-group">
-                          <label for="guestsInput" >How Many Guests</label>
-                          <select name="guests" class="form-control" id="guestsInput">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                          </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="timeInput" id="time">What Time?</label>
-                            <select name="time" class="form-control" id="timeInput">
-                              <option value="6">6:00PM</option>
-                              <option value="7">7:00PM</option>
-                              <option value="8">8:00PM</option>
-                              <option value="9">9:00PM</option>
-                              <option value="10">10:00PM</option>
-                            </select>
-                        </div>
-                        <button class="btn btn-primary" type="submit">Confirm</button>
-                      </form>
-                </div>
-                <div class="col-md-6">
-                    <p>
-                        Please Note: This is not a reservation. You will be added to the current wait list.
-                        You may have a short wait once you arrive while we prepare your table.
-                    </p>
-                </div>
+      <div class="content-box">
+        <div class="row">
+          <div class="col-md-6">
+            <h1>Get On The List</h1>
+            <form method="POST" action="/reservations">
+              @csrf
+              <div class="form-group">
+                <label for="inputfname">First Name</label>
+                <input id="inputfname" type="text" class="form-control form-control-lg @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus placeholder="John">
 
-            </div>
+                @error('fname')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="inputlname">Last Name</label>
+                <input id="inputlname" type="text" class="form-control form-control-lg @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus placeholder="Doe">
+
+                @error('lname')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="inputemail">Email address</label>
+                <input id="inputemail" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Doe">
+
+                @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="inputphonenumber">Phone Number</label>
+                <input id="inputphonenumber" type="tel" class="form-control form-control-lg @error('phone_number') is-invalid @enderror" name="phone_number" value="{{ old('phone_number') }}" required autocomplete="phone_number" autofocus placeholder="example: 3475789090">
+
+                @error('phone_number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="guestsinput">How Many Guest</label>
+                <select name="guests_total" class="form-control form-control-lg @error('guests_total') is-invalid @enderror" id="guestsinput">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                @error('guests_total')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <label for="timeinput">What Time?</label>
+                <select name="time" class="form-control form-control-lg @error('time') is-invalid @enderror" id="timeinput">
+                  <option value="6">6:00 PM</option>
+                  <option value="7">7:00 PM</option>
+                  <option value="8">8:00 PM</option>
+                  <option value="9">9:00 PM</option>
+                  <option value="10">10:00 PM</option>
+                </select>
+                @error('time')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary mb-2">Confirm</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-6">
+            <p>Please Note: This is not a reservation. You will be added to the current wait list. You may have a short wait once you arrive while we prepare your table.</p>
+          </div>
         </div>
+      </div>
     </div>
 @endsection
