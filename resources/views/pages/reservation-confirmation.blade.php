@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{$settings['general']->site_title}} Reservation Confirmed
+@endsection
+
 @section('content')
     <div id="offers-page">
 

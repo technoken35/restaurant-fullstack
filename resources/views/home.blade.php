@@ -1,5 +1,9 @@
 @extends('layouts.landing-page')
 
+@section('title')
+{{$settings['general']->site_title}} Americas #1 Burgers
+@endsection
+
 @section('content')
 
 <section id="information">

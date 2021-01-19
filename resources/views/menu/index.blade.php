@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Food Menu
+{{$settings['general']->site_title}} Food Menu
 @endsection
 
 @section('content')

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{$settings['general']->site_title}} About Billy's Burgers
+@endsection
+
 @section('content')
     <div id="about-page">
         <div class="content-box">

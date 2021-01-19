@@ -98,7 +98,10 @@ class StaticPagesController extends Controller
     }
 
 
-    public function singleMenu(){
-        return view('menu/single-menu');
+    public function singleMenu($slug){
+        return view('menu/single-menu/',[
+            // uc first is built in function to turn first letter to uppercase
+            "foodItem"=> ucfirst($slug)
+        ]);
     }
 }

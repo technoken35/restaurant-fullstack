@@ -40,41 +40,42 @@ Route::get('/menu/{slug}', 'App\Http\Controllers\StaticPagesController@singleMen
 Route::get('/admin', 'App\Http\Controllers\admin\AdminController@index');
 
 // admin food cat
-Route::get('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@index');
-Route::get('/admin/food-categories/create', 'App\Http\Controllers\admin\FoodCategoriesController@create');
-Route::post('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@store');
-Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodCategoriesController@edit');
-Route::put('/admin/food-categories/{id}', 'App\Http\Controllers\admin\FoodCategoriesController@update');
-Route::delete('/admin/food-categories/{id}/delete', 'App\Http\Controllers\admin\FoodCategoriesController@delete');
+
+// Here we are using a custom middleware class setup by us. We are passing everything after : as a value of variable
+Route::get('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@index')->middleware('role:Admin');
+Route::get('/admin/food-categories/create', 'App\Http\Controllers\admin\FoodCategoriesController@create')->middleware('role:Admin');
+Route::post('/admin/food-categories', 'App\Http\Controllers\admin\FoodCategoriesController@store')->middleware('role:Admin');
+Route::get('/admin/food-categories/{id}/edit', 'App\Http\Controllers\admin\FoodCategoriesController@edit')->middleware('role:Admin');
+Route::put('/admin/food-categories/{id}', 'App\Http\Controllers\admin\FoodCategoriesController@update')->middleware('role:Admin');
+Route::delete('/admin/food-categories/{id}/delete', 'App\Http\Controllers\admin\FoodCategoriesController@delete')->middleware('role:Admin');
 
 
 // admin food items
-Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index');
-Route::get('/admin/food-items/create', 'App\Http\Controllers\admin\FoodItemsController@create');
-Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsController@edit');
-Route::post('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@store');
-Route::put('/admin/food-items/{id}', 'App\Http\Controllers\admin\FoodItemsController@update');
-Route::delete('/admin/food-items/{id}/delete', 'App\Http\Controllers\admin\FoodItemsController@delete');
+Route::get('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@index')->middleware('role:Admin');
+Route::get('/admin/food-items/create', 'App\Http\Controllers\admin\FoodItemsController@create')->middleware('role:Admin');
+Route::get('/admin/food-items/{id}/edit', 'App\Http\Controllers\admin\FoodItemsController@edit')->middleware('role:Admin');
+Route::post('/admin/food-items', 'App\Http\Controllers\admin\FoodItemsController@store')->middleware('role:Admin');
+Route::put('/admin/food-items/{id}', 'App\Http\Controllers\admin\FoodItemsController@update')->middleware('role:Admin');
+Route::delete('/admin/food-items/{id}/delete', 'App\Http\Controllers\admin\FoodItemsController@delete')->middleware('role:Admin');
 
 
 // Admin users
-Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index');
+Route::get('/admin/users', 'App\Http\Controllers\admin\UsersController@index')->middleware('role:Admin');
 // create user page
-Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@create');
+Route::get('/admin/users/create', 'App\Http\Controllers\admin\UsersController@create')->middleware('role:Admin');
 // post route to save user to DB
-Route::post('/admin/users', 'App\Http\Controllers\admin\UsersController@store');
-Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit');
-Route::put('/admin/users/{id}', 'App\Http\Controllers\admin\UsersController@update');
+Route::post('/admin/users', 'App\Http\Controllers\admin\UsersController@store')->middleware('role:Admin');
+Route::get('/admin/users/{id}/edit', 'App\Http\Controllers\admin\UsersController@edit')->middleware('role:Admin');
+Route::put('/admin/users/{id}', 'App\Http\Controllers\admin\UsersController@update')->middleware('role:Admin');
 // we can either delete with a post request or a get requests
 //Route::get('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
 
 //Route::post('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
 
 // To follow rest conventions we would do a delete request instead of a post or get method
-Route::delete('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete');
+Route::delete('/admin/users/{id}/delete', 'App\Http\Controllers\admin\UsersController@delete')->middleware('role:Admin');
 
-// Admin Customers
-// Admin Members
+// Admin offer Members
 Route::get('/admin/members', 'App\Http\Controllers\admin\MemberController@index');
 Route::delete('/admin/members/{id}/delete', 'App\Http\Controllers\admin\MemberController@delete');
 
@@ -87,12 +88,12 @@ Route::delete('/admin/reservations/{id}/delete', 'App\Http\Controllers\admin\Res
 Route::get('/admin/reservations', 'App\Http\Controllers\admin\ReservationController@index');
 
 //Admin settings
-Route::get('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@general');
-Route::put('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@saveGeneral');
-Route::get('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@seo');
-Route::put('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@saveSeo');
-Route::get('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@social');
-Route::put('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@saveSocial');
+Route::get('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@general')->middleware('role:Admin');
+Route::put('/admin/settings/general', 'App\Http\Controllers\admin\SettingController@saveGeneral')->middleware('role:Admin');
+Route::get('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@seo')->middleware('role:Admin');
+Route::put('/admin/settings/seo', 'App\Http\Controllers\admin\SettingController@saveSeo')->middleware('role:Admin');
+Route::get('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@social')->middleware('role:Admin');
+Route::put('/admin/settings/social', 'App\Http\Controllers\admin\SettingController@saveSocial')->middleware('role:Admin');
 
 
 
